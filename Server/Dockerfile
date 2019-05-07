@@ -8,12 +8,10 @@ WORKDIR /app
 COPY . /app
 
 # Install any needed packages specified in requirements.txt
-RUN pip install Flask
-RUN pip install Flask-BasicAuth
-RUN pip install mysql-connector
+RUN pip install -r requirements.txt
 
-# Make port 5001 available to the world outside this container
-EXPOSE 5001
+# Make port 5000 available to the world outside this container
+EXPOSE 5000
 
-# Run administration.py when the container launches
-CMD ["python", "administration.py"]
+# Run server.py when the container launches
+CMD ["python", "server.py"]

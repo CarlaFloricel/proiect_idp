@@ -19,3 +19,12 @@ services:
       MYSQL_DATABASE: timetable
     volumes:
       - ./DatabaseInitialization:/docker-entrypoint-initdb.d/:ro
+
+  server:
+    build: ./Server
+    links:
+      - database
+    ports:
+      - 5000:5000
+    volumes:
+      - ./Server:/app

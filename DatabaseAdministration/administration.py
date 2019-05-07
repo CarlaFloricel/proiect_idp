@@ -38,21 +38,17 @@ def addFlightForm():
 def addFlight():
     connection = mysql.connector.connect(**config)
     cursor = connection.cursor()
-    text = "CREATE TABLE IF NOT EXISTS movies (movieId VARCHAR(20), name VARCHAR(50), displayDay INT, displayHour INT);"
+    text = "CREATE TABLE IF NOT EXISTS movies (movieId VARCHAR(20), name VARCHAR(50), displayDay INT, displayHour INT, numberOfSeats INT);"
     cursor.execute(text)
     cursor.execute("COMMIT")
-    text = "CREATE TABLE IF NOT EXISTS seats (movieId VARCHAR(20), numberOfSeats INT, reservedSeats INT, boughtSeats INT);"
+    text = "CREATE TABLE IF NOT EXISTS reservedSeats (reservationId INT NOT NULL AUTO_INCREMENT, movieId VARCHAR(20), numberOfSeats INT);"
     cursor.execute(text)
     cursor.execute("COMMIT")
-    text = "INSERT INTO movies (movieId, name, displayDay, displayHour) "
+    text = "INSERT INTO movies (movieId, name, displayDay, displayHour, numberOfSeats) "
     text += " VALUES (\'"
     text += request.form['movieId'] + "\', \'"  + request.form['name'] + "\',"
-    text += request.form['displayDay']  + ", " + request.form['displayHour']
+    text += request.form['displayDay']  + ", " + request.form['displayHour'] + ", " + request.form['nrOfSeats']
     text += ")"
-    cursor.execute(text)
-    cursor.execute("COMMIT")
-    text = "INSERT INTO seats (movieId, numberOfSeats, reservedSeats, boughtSeats) VALUES (\'"
-    text += request.form['movieId'] + "\', " + request.form['numberOfSeats'] + ", 0, 0)"
     cursor.execute(text)
     cursor.execute("COMMIT")
     cursor.close()

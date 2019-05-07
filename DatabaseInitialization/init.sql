@@ -2,13 +2,15 @@ CREATE TABLE movies (
   movieId VARCHAR(20),
   name VARCHAR(50),
   displayDay INT,
-  displayHour INT
+  displayHour INT,
+  numberOfSeats INT
 );
 
-CREATE TABLE seats (
+
+CREATE TABLE reservedSeats (
 	movieId VARCHAR(20),
 	numberOfSeats INT,
-	reservedSeats INT,
-	boughtSeats INT
+    reservationId INT
+
 );
 
