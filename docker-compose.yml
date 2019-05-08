@@ -1,6 +1,7 @@
 version: '3.1'
 services:
   administration:
+    image: carlafgabriela/proiect_idp:latest
     build: ./DatabaseAdministration
     links:
       - database
@@ -21,6 +22,7 @@ services:
       - ./DatabaseInitialization:/docker-entrypoint-initdb.d/:ro
 
   server:
+    image: carlafgabriela/proiect_idp:bla
     build: ./Server
     links:
       - database
