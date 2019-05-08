@@ -41,7 +41,7 @@ def addFlight():
     text = "CREATE TABLE IF NOT EXISTS movies (movieId VARCHAR(20), name VARCHAR(50), displayDay INT, displayHour INT, numberOfSeats INT);"
     cursor.execute(text)
     cursor.execute("COMMIT")
-    text = "CREATE TABLE IF NOT EXISTS reservedSeats (reservationId INT NOT NULL AUTO_INCREMENT, movieId VARCHAR(20), numberOfSeats INT);"
+    text = "CREATE TABLE IF NOT EXISTS reservedSeats (reservationId INT, movieId VARCHAR(20), numberOfSeats INT);"
     cursor.execute(text)
     cursor.execute("COMMIT")
     text = "INSERT INTO movies (movieId, name, displayDay, displayHour, numberOfSeats) "
